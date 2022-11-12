@@ -1,9 +1,13 @@
 import { Module } from '@nestjs/common';
-import { HiService } from './hi.service';
-import { HiController } from './hi.controller';
+import { HIService } from './hi.service';
+import { HIController } from './hi.controller';
+import { SQLDBModule } from 'src/infra/sql/sqldb.module';
+import { HI } from './entities/hi.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  controllers: [HiController],
-  providers: [HiService]
+  imports: [TypeOrmModule.forFeature([HI])],
+  controllers: [HIController],
+  providers: [HIService],
 })
-export class HiModule {}
+export class HIModule {}

@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { HiService } from './hi.service';
+import { HIService } from './hi.service';
 import { CreateHiDto } from './dto/create-hi.dto';
 
 @Controller('hi')
-export class HiController {
-  constructor(private readonly hiService: HiService) {}
+export class HIController {
+  constructor(private readonly hiService: HIService) {}
 
   @Post()
   create(@Body() createHiDto: CreateHiDto) {
