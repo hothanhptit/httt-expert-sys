@@ -66,112 +66,111 @@ export class HIService {
   }
 
   hi = () => {
-    const serviceGood = new FuzzySet('good');
+    const good_bmi = new FuzzySet('good_bmi');
 
-    serviceGood.generateMembershipValues({
-      type: MembershipFunctionType.Triangular,
+    good_bmi.generateMembershipValues({
+      type: MembershipFunctionType.Trapezoidal,
       parameters: {
-        left: 0,
-        center: 4,
-        right: 8,
+        bottomLeft: 0,
+        topLeft: 0,
+        topRight: 1,
+        bottomRight: 1,
         minValue: 0,
-        maxValue: 10,
-        step: 1,
+        maxValue: 100,
+        step: 0.5,
       },
     });
 
-    const serviceBad = new FuzzySet('bad');
-    serviceBad.generateMembershipValues({
-      type: MembershipFunctionType.Triangular,
+    const overw_bmi = new FuzzySet('overw_bmi');
+    overw_bmi.generateMembershipValues({
+      type: MembershipFunctionType.Trapezoidal,
       parameters: {
-        left: 2,
-        center: 6,
-        right: 10,
-        minValue: 0,
-        maxValue: 10,
-        step: 1,
+        bottomLeft: 2,
+        topLeft: 2,
+        topRight: 3,
+        bottomRight: 3,
+        minValue:0,
+        maxValue: 100,
+        step: 0.5,
       },
     });
 
-    const foodTasty = new FuzzySet('tasty');
-    foodTasty.generateMembershipValues({
-      type: MembershipFunctionType.Triangular,
+    const normal_gi = new FuzzySet('normal_gi');
+    normal_gi.generateMembershipValues({
+      type: MembershipFunctionType.Trapezoidal,
       parameters: {
-        left: 0,
-        center: 4,
-        right: 8,
+        bottomLeft: 0,
+        topLeft: 0,
+        topRight: 1,
+        bottomRight: 1,
         minValue: 0,
-        maxValue: 10,
-        step: 1,
+        maxValue: 100,
+        step: 0.5,
       },
     });
-    const foodGross = new FuzzySet('gross');
-    foodGross.generateMembershipValues({
-      type: MembershipFunctionType.Triangular,
+    const bad_gi = new FuzzySet('bad_gi');
+    bad_gi.generateMembershipValues({
+      type: MembershipFunctionType.Trapezoidal,
       parameters: {
-        left: 2,
-        center: 6,
-        right: 10,
+        bottomLeft: 2,
+        topLeft: 2,
+        topRight: 3,
+        bottomRight: 3,
         minValue: 0,
-        maxValue: 10,
-        step: 1,
-      },
-    });
-
-    const cheapTip = new FuzzySet('cheap');
-    cheapTip.generateMembershipValues({
-      type: MembershipFunctionType.Triangular,
-      parameters: {
-        left: 0,
-        center: 4,
-        right: 8,
-        minValue: 0,
-        maxValue: 10,
-        step: 1,
-      },
-    });
-    const generousTip = new FuzzySet('generous');
-    generousTip.generateMembershipValues({
-      type: MembershipFunctionType.Triangular,
-      parameters: {
-        left: 2,
-        center: 6,
-        right: 10,
-        minValue: 0,
-        maxValue: 10,
-        step: 1,
+        maxValue: 100,
+        step: 0.5,
       },
     });
 
-    // Then, we tie these fuzzy sets to variables
-    const serviceVariable = new LinguisticVariable('service')
-      .addSet(serviceGood)
-      .addSet(serviceBad);
+    const uh = new FuzzySet('unhealthy');
+    uh.generateMembershipValues({
+      type: MembershipFunctionType.Trapezoidal,
+      parameters: {
+        bottomLeft: 0,
+        topLeft: 0,
+        topRight: 1,
+        bottomRight: 1,
+        minValue: 0,
+        maxValue: 100,
+        step: 0.5,
+      },
+    });
+    const healthy = new FuzzySet('healthy');
+    healthy.generateMembershipValues({
+      type: MembershipFunctionType.Trapezoidal,
+      parameters: {
+        bottomLeft: 2,
+        topLeft: 2,
+        topRight: 3,
+        bottomRight: 3,
+        minValue: 0,
+        maxValue: 10,
+        step: 0.5,
+      },
+    });
+    const bmi = new LinguisticVariable('bmi')
+      .addSet(good_bmi)
+      .addSet(overw_bmi);
 
-    const foodVariable = new LinguisticVariable('food')
-      .addSet(foodTasty)
-      .addSet(foodGross);
+    const gi = new LinguisticVariable('gi')
+      .addSet(normal_gi)
+      .addSet(bad_gi);
 
-    const tipVariable = new LinguisticVariable('tip')
-      .addSet(cheapTip)
-      .addSet(generousTip);
-
-    // Now that we have variables with sets, we attach them to fuzzy inference system
-    const exampleFIS = new FuzzyInferenceSystem('Example')
-      .addInput(serviceVariable)
-      .addInput(foodVariable)
-      .addOutput(tipVariable);
-
-    // Finally we add rules to our system, written in natural language
-    // The values must match our variables and their fuzzy sets
-    exampleFIS.addRule(
-      'IF service IS good AND food IS tasty THEN tip IS generous',
+    const hi = new LinguisticVariable('hi')
+      .addSet(uh)
+      .addSet(healthy);
+    const HI_RES = new FuzzyInferenceSystem('HI')
+      .addInput(bmi)
+      .addInput(gi)
+      .addOutput(hi);
+    HI_RES.addRule(
+      'IF bmi IS good_bmi AND gi IS normal_gi THEN hi IS healthy',
     );
-    exampleFIS.addRule('IF service IS bad OR food IS gross THEN tip IS cheap');
+    HI_RES.addRule('IF bmi IS overw_bmi AND gi IS bad_gi THEN hi IS unhealthy');
 
-    const re = exampleFIS.solve(
+    const re = HI_RES.solve(
       'Mamdani',
-      { service: 1, food: 5 },
+      { bmi: 1, gi: 1 },
       DefuzzicationType.Centroid,
     );
     console.log(re);

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="self-center bg-emerald-200 h-100 px-[800px] py-40 flex flex-col">
+      <div class="">
+        <form>
+          <div class="mb-6">
+            <label
+              for="email"
+              class="block mb-2 text-sm font-medium dark:text-gray-700"
+              >Chỉ số đường huyết</label
+            >
+            <input
+              type="email"
+              id="email"
+              class="shadow-sm border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+              placeholder="90"
+              required
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="password"
+              class="block mb-2 text-sm font-medium dark:text-gray-700"
+              >Cân nặng</label
+            >
+            <input
+              type="password"
+              id="password"
+              class="shadow-sm border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+              required
+              placeholder="68.2"
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="repeat-password"
+              class="block mb-2 text-sm font-medium dark:text-gray-700"
+              >Chiều cao</label
+            >
+            <input
+              type="password"
+              id="repeat-password"
+              class="shadow-sm border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+              required
+              placeholder="173"
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="repeat-password"
+              class="block mb-2 text-sm font-medium dark:text-gray-700"
+              >Chỉ số LDL</label
+            >
+            <input
+              type="password"
+              id="repeat-password"
+              class="shadow-sm border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+              required
+              placeholder="95"
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="repeat-password"
+              class="block mb-2 text-sm font-medium dark:text-gray-700"
+              >Chỉ số HDL</label
+            >
+            <input
+              type="password"
+              id="repeat-password"
+              class="shadow-sm border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+              required
+              placeholder="61"
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="repeat-password"
+              class="block mb-2 text-sm font-medium dark:text-gray-700"
+              >Chỉ số triglyceride</label
+            >
+            <input
+              type="password"
+              id="repeat-password"
+              class="shadow-sm border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+              required
+              placeholder="148"
+            />
+          </div>
+          <div class="flex items-start mb-6">
+            <div class="flex items-center h-5">
+              <input
+                id="terms"
+                type="checkbox"
+                value=""
+                class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                required
+              />
+            </div>
+            <label
+              for="terms"
+              class="ml-2 text-sm font-medium dark:text-gray-700"
+              ><a
+                href="#"
+                class="text-blue-600 hover:underline dark:text-blue-500"
+                >Lưu lại thông tin của tôi</a
+              ></label
+            >
+          </div>
+          <button
+            type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-40 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Bắt đầu tính toán
+          </button>
+        </form>
+      </div>
+      <div class="flex-1 self-center p-4">
+          <div class="px-10 py-4 text-gray-800 text-2xl">Chỉ số HI của bạn là: <span class="font-bold">9.5</span></div>
+          <div class="text-gray-800 text-xl">Bạn đang trong tình trạng khoẻ mạnh!</div>
+      </div>
+    </div>
+  </body>
+</html>
