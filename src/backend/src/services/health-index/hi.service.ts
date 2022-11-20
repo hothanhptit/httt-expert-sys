@@ -19,18 +19,19 @@ export class HIService {
   ) {}
   create(createHiDto: CreateHiDto) {
     const hi = new HI();
-    hi.age = 10;
-    hi.bmi = 20;
-    hi.description = 'oke';
-    hi.gi = 20.5;
-    hi.name = 'thanh';
-
+    hi.gi = 20;
+    hi.hdl = 20;
+    hi.height = 20;
+    hi.hi = 20;
+    hi.ldl = 20;
+    hi.trigl = 20;
+    hi.weight = 20;
     return this.hiRepository.save(hi);
   }
 
-  findAll() {
-    const te = this.hi();
-    return `This action returns all hi` + te;
+  async findAll() {
+    const te = await this.hiRepository.find();
+    return `This action returns all hi` + JSON.stringify(te);
   }
 
   async findOne(id: number) {

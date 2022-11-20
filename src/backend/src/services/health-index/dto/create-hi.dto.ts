@@ -1,7 +1,9 @@
 export class CreateHiDto {
-    name: string;
-    bmi: number;
-    description: string;
-    age: number;
     gi: number;
+    height: number;
+    weight: number;
+    ldl: number;
+    hdl: number;
+    trigl: number;
+    hi: number;
 }

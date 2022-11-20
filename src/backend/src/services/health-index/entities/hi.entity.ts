@@ -1,4 +1,3 @@
-
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -6,18 +5,27 @@ export class HI {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 255 })
-  name: string;
-
-  @Column('text')
-  description: string;
-
-  @Column()
-  bmi: number;
-
-  @Column('int')
-  age: number;
-
   @Column()
   gi: number;
+
+  @Column()
+  height: number;
+
+  @Column()
+  weight: number;
+
+  @Column()
+  ldl: number;
+
+  @Column()
+  hdl: number;
+
+  @Column()
+  trigl: number;
+
+  @Column()
+  hi: number;
+
+  @Column()
+  date_created: Date;
 }
