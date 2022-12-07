@@ -1,16 +1,8 @@
-/* eslint-disable prettier/prettier */
 import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
+  Controller, Delete, Get, Param, Post
 } from '@nestjs/common';
-import { HIService } from './hi.service';
-import { CreateHiDto } from './dto/create-hi.dto';
 import { Req } from '@nestjs/common/decorators';
+import { HIService } from './hi.service';
 
 @Controller('hi')
 export class HIController {

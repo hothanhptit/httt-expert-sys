@@ -10,13 +10,4 @@ export class LinguisticRule {
     this.antecedents = antecedents;
     this.consequent = consequent;
   }
-
-  prettyPrint = () => {
-    const antecedents = this.antecedents
-      .map(({ linguisticVariable, fuzzySet }) => `${linguisticVariable} IS ${fuzzySet}`)
-      .join(` ${this.operator} `);
-    const consequent = `${this.consequent.linguisticVariable} IS ${this.consequent.fuzzySet}`;
-
-    return `IF ${antecedents} THEN ${consequent}`;
-  };
 }

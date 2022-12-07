@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { json } from 'body-parser';
 import { Repository } from 'typeorm';
 
 import { hi } from '../helpers/hi_cacl';
@@ -14,12 +15,18 @@ export class HIService {
     private readonly hiRepository: Repository<HI>
   ) {}
   createHi(request: Request) {
-    const res = 1;
-    // const res = hi();
-    console.log('====================================');
-    console.log(request.body);
-    console.log('====================================');
-    console.log('hi', res);
+    const req = JSON.parse(JSON.stringify(request.body));
+
+    // let { gi, weight, height, ldl, hdl, triglyceride } = req;
+    // req.gi
+    const gi = parseFloat(req.gi);
+    const hdl = parseFloat(req.hdl);
+    const ldl = parseFloat(req.ldl);
+    const weight = parseFloat(req.weight);
+    const height = parseFloat(req.height);
+    const triglyceride = parseFloat(req.triglyceride);
+
+    const res = hi(gi, ldl, hdl, triglyceride, weight, height);
 
     return res.toString();
   }

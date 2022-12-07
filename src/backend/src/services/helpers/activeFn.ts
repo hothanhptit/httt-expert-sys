@@ -6,6 +6,7 @@ const NOT_CACULATED = 5;
 const DANGER = 5;
 
 export const bmi = (weight: number, height: number) => {
+  height = height / 100;
   return (weight / (height * height)).toFixed(1);
 };
 
@@ -116,4 +117,3 @@ export const heartbeat = (heartbeat: number, age: number) => {
 
   return IDEA;
 };
-

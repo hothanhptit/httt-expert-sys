@@ -30,27 +30,4 @@ export class LinguisticVariable {
     return this;
   };
 
-  getSet = (name: string) => {
-    if (this.indexedFuzzySets[name] === undefined) {
-      throw new Error('No set with that name exists');
-    }
-    return this.indexedFuzzySets[name];
-  };
-
-  removeSet = (name: string) => {
-    this.fuzzySets = this.fuzzySets.filter((set) => set.name !== name);
-    this.indexSets();
-    return this;
-  };
-
-  editSet = (name: string, newSet: FuzzySet) => {
-    const i = this.fuzzySets.findIndex((set) => set.name === name);
-    this.fuzzySets = [
-      ...this.fuzzySets.slice(0, i),
-      newSet,
-      ...this.fuzzySets.slice(i + 1, this.fuzzySets.length),
-    ];
-    this.indexSets();
-    return this;
-  };
 }
