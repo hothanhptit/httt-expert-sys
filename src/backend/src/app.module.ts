@@ -1,3 +1,6 @@
+import { UserModule } from './services/user/user.module';
+import { User } from './services/user/entities/user.entity';
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { HIController } from './services/health-index/hi.controller';
 import { HIService } from './services/health-index/hi.service';
@@ -12,16 +15,18 @@ import { HIModule } from './services/health-index/hi.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '18162000THTT',
+      password: 'admin',
       database: 'exp_sys_hi',
       autoLoadEntities: true,
       synchronize: true,
       entities: [
         // __dirname + '/**/health-index/**/*.entity{.ts,.js}',
         HI,
-      ]
+        User,
+      ],
     }),
-    HIModule
+    HIModule,
+    UserModule,
   ],
   controllers: [],
   providers: [],

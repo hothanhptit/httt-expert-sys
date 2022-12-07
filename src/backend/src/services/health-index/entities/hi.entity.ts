@@ -26,6 +26,6 @@ export class HI {
   @Column()
   hi: number;
 
-  @Column()
-  date_created: Date;
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
+  date_created: string;
 }
