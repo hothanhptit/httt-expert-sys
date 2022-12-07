@@ -17,7 +17,7 @@ export class HIController {
   constructor(private readonly hiService: HIService) {}
 
   @Post()
-  create(@Req() request: Request): string {
+  create(@Req() request): string {
     return this.hiService.createHi(request);
   }
 

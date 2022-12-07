@@ -15,10 +15,10 @@ import { HIModule } from './services/health-index/hi.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'admin',
+      password: '18162000THTT',
       database: 'exp_sys_hi',
-      autoLoadEntities: true,
-      synchronize: true,
+      autoLoadEntities: false,
+      synchronize: false,
       entities: [
         // __dirname + '/**/health-index/**/*.entity{.ts,.js}',
         HI,
